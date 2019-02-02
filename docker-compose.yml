@@ -13,6 +13,7 @@ services:
     environment:
       - APP_NAME=${CODE_CONF_TITLE:-Gitea}
       - RUN_MODE=prod
+      - ENABLE_SWAGGER=true
       - SSH_DOMAIN=${CODE_CONF_URL:-code.domain.com}
       - SSH_PORT=${CODE_PORT_SSH:-2222}
       - DISABLE_REGISTRATION=${CODE_CONF_REGISTRATION:-true}
