@@ -1,0 +1,32 @@
+version: "3"
+services:
+  daemon:
+    image: gitea/gitea:arm32v7
+    volumes:
+      - ${CODE_VOLUME_DATA:-./volumes/data}:/data
+    ports:
+      - ${CODE_PORT_SSH:-2222}:22
+    networks:
+      - web
+      - databases
+      - default
+    environment:
+      - APP_NAME=${CODE_CONF_TITLE:-Gitea}
+      - RUN_MODE=prod
+      - SSH_DOMAIN=${CODE_CONF_URL:-code.domain.com}
+      - SSH_PORT=${CODE_PORT_SSH:-2222}
+      - DISABLE_REGISTRATION=${CODE_CONF_REGISTRATION:-true}
+      - DEFAULT_PRIVATE=${CODE_CONF_PRIVATE_DEFAULT:-false}
+      - FORCE_PRIVATE=${CODE_CONF_PRIVATE_FORCE:-false}
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=web"
+        - "traefik.port=3000"
+        - "traefik.frontend.rule=Host:${CODE_CONF_URL:-code.domain.com}"
+        - "traefik.frontend.port=3000"
+networks:
+  web:
+    external: true
+  databases:
+    external: true
