@@ -14,6 +14,7 @@ services:
       - APP_NAME=${CODE_CONF_TITLE:-Gitea}
       - RUN_MODE=prod
       - ENABLE_SWAGGER=true
+      - MAX_RESPONSE_ITEMS=50
       - SSH_DOMAIN=${CODE_CONF_URL:-code.domain.com}
       - SSH_PORT=${CODE_PORT_SSH:-2222}
       - DISABLE_REGISTRATION=${CODE_CONF_REGISTRATION:-true}
