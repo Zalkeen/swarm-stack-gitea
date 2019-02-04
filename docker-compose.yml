@@ -18,7 +18,7 @@ services:
       - SSH_DOMAIN=${CODE_CONF_URL:-code.domain.com}
       - SSH_PORT=${CODE_PORT_SSH:-2222}
       - DISABLE_REGISTRATION=${CODE_CONF_REGISTRATION:-true}
-      - DEFAULT_PRIVATE=${CODE_CONF_PRIVATE_DEFAULT:-false}
+      - DEFAULT_PRIVATE=${CODE_CONF_PRIVATE_DEFAULT:-private}
       - FORCE_PRIVATE=${CODE_CONF_PRIVATE_FORCE:-false}
     deploy:
       labels:
